@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Message, Menu as IconMenu, Setting } from '@element-plus/icons-vue'
 import HeaderBar from './components/HeaderBar.vue'
 import SideBar from './components/SideBar.vue'
 import AppMain from './components/AppMain.vue'

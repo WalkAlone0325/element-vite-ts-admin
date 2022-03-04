@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Message, Menu as IconMenu, Setting } from '@element-plus/icons-vue'
+</script>
+
 <template>
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
     <el-scrollbar>

@@ -14,6 +14,11 @@ import '@/styles/index.scss'
 // If you want to use ElMessage, import it.
 import 'element-plus/theme-chalk/src/message.scss'
 
+// router
+import router from './router'
+// store
+import store from './store'
+
 const app = createApp(App)
 // app.use(ElementPlus);
-app.mount('#app')
+app.use(router).use(store).mount('#app')
