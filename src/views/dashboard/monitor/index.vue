@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <h2>monitor</h2>
 </template>

@@ -1,18 +1,24 @@
 import PageLayout from '@/layout/page-layout.vue'
+import BlankLayout from '@/layout/blank-layout.vue'
 import type { RouteRecordRaw } from 'vue-router'
+import Login from './modules/login'
+import appRoutes from './modules'
 
 export const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/dashboard',
+    redirect: 'login',
+  },
+  Login,
+  {
+    name: 'root',
+    path: '/',
     component: PageLayout,
-    name: 'Home',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
-        meta: { title: '首页', icon: '', affix: true },
-      },
-    ],
+    children: appRoutes,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'notFound',
+    component: () => import('@/views/not-found/index.vue'),
   },
 ]

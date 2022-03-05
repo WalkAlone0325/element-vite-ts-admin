@@ -1,9 +1,5 @@
 <template>
-  <router-view>
-    <PageLayout />
-  </router-view>
+  <router-view />
 </template>
 
-<script setup lang="ts">
-import PageLayout from './layout/page-layout.vue'
-</script>
+<script setup lang="ts"></script>

@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <h2>card</h2>
 </template>

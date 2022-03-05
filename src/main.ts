@@ -17,10 +17,27 @@ import '@/styles/index.scss'
 import 'element-plus/theme-chalk/src/message.scss'
 
 // router
-import router from './router'
+import { router, setupRouter, setupRouterGuard } from './router'
 // store
-import store from './store'
+import { setupStore } from './store'
 
-const app = createApp(App)
+async function bootstrap() {
+  const app = createApp(App)
+
+  // 配置 pinia
+  setupStore(app)
+
+  // 配置 router
+  setupRouter(app)
+
+  // 配置路由守卫
+  setupRouterGuard(router)
+
+  await router.isReady()
+
+  app.mount('#app')
+}
+
+bootstrap()
 // app.use(ElementPlus);
-app.use(router).use(store).mount('#app')
+// app.use(router).use(store).mount('#app')
