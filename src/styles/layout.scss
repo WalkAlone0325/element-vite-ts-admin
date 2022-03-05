@@ -1,7 +1,7 @@
 .layout-container {
   width: 100%;
   height: 100%;
-  border: 1px solid #eee;
+  // border: 1px solid #eee;
 
   .el-header {
     display: inline-flex;
@@ -13,11 +13,12 @@
   }
 
   .el-aside {
-    // width: 200px;
+    transition: var(--el-transition-duration);
     color: var(--el-text-color-primary);
     background: #fff !important;
     border-right: solid 1px #e6e6e6;
     box-sizing: border-box;
+    height: 100%;
   }
 
   .el-menu {

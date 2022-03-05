@@ -1,5 +1,7 @@
 <template>
-  <PageLayout />
+  <router-view>
+    <PageLayout />
+  </router-view>
 </template>
 
 <script setup lang="ts">

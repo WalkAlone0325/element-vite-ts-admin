@@ -11,6 +11,8 @@ import App from './App.vue'
 
 import '@/styles/index.scss'
 
+// // fade/zoom
+// import 'element-plus/theme-chalk/src/base.scss'
 // If you want to use ElMessage, import it.
 import 'element-plus/theme-chalk/src/message.scss'
 
