@@ -20,9 +20,13 @@ import 'element-plus/theme-chalk/src/message.scss'
 import { router, setupRouter, setupRouterGuard } from './router'
 // store
 import { setupStore } from './store'
+import { setupRegisterIcon } from './components/Icon'
 
 async function bootstrap() {
   const app = createApp(App)
+
+  // 图标
+  setupRegisterIcon(app)
 
   // 配置 pinia
   setupStore(app)
@@ -33,7 +37,7 @@ async function bootstrap() {
   // 配置路由守卫
   setupRouterGuard(router)
 
-  await router.isReady()
+  // await router.isReady()
 
   app.mount('#app')
 }

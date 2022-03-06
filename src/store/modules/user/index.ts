@@ -5,7 +5,7 @@ export const useUserStore = defineStore('user', {
   state: (): UserState => ({
     name: undefined,
     avatar: undefined,
-    role: '',
+    role: '*',
   }),
 
   getters: {

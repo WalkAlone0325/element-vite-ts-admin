@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import {
-  ArrowDown,
-  BellFilled,
-  FullScreen,
-  Expand,
-  Fold,
-} from '@element-plus/icons-vue'
 import { useFullscreen } from '@vueuse/core'
 import avatar from '@/assets/images/favicon.svg'
 import { ElMessage } from 'element-plus'
 import { computed, ref } from 'vue'
 import { useSetting } from '@/store'
+import { storeToRefs } from 'pinia'
 
 // 全屏
 const { isFullscreen, isSupported, toggle } = useFullscreen()
@@ -27,6 +21,31 @@ const toggleFullscreen = () => {
 
 // collapsed 切换
 const settingStore = useSetting()
+const { isCollapse } = storeToRefs(settingStore)
+
+// 下拉框
+
+interface DropOption {
+  id: number
+  value: string
+  icon?: string
+  divided?: boolean
+}
+const dropOptions = ref<DropOption[]>([
+  { id: 1, icon: '', value: '个人中心', divided: false },
+  { id: 2, icon: '', value: '全局配置', divided: false },
+  { id: 3, icon: '', value: '退出登录', divided: false },
+])
+const handleClickItem = (dropItem: DropOption) => {
+  switch (dropItem.id) {
+    case 2:
+      settingStore.toggleDrawer()
+      break
+
+    default:
+      break
+  }
+}
 </script>
 
 <template>
@@ -34,7 +53,7 @@ const settingStore = useSetting()
     <div>
       <div class="collapsed-icon" @click="settingStore.toggleCollapse">
         <el-icon :size="26">
-          <expand v-if="settingStore.isCollpase" />
+          <expand v-if="isCollapse" />
           <fold v-else />
         </el-icon>
       </div>
@@ -49,7 +68,7 @@ const settingStore = useSetting()
           <bell-filled />
         </icon-tooltip>
       </div>
-      <el-dropdown>
+      <el-dropdown @command="handleClickItem">
         <span class="avatar-link">
           <el-avatar :size="36" :src="avatar"></el-avatar>
           <el-icon class="el-icon--right">
@@ -58,14 +77,20 @@ const settingStore = useSetting()
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>View</el-dropdown-item>
-            <el-dropdown-item>Add</el-dropdown-item>
-            <el-dropdown-item>Delete</el-dropdown-item>
+            <el-dropdown-item
+              v-for="item in dropOptions"
+              :key="item.id"
+              :icon="item.icon"
+              :divided="item.divided"
+              :command="item"
+              >{{ item.value }}</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
     </div>
   </el-header>
+  <global-setting />
 </template>
 
 <style lang="scss" scoped>

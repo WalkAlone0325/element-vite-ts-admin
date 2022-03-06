@@ -4,7 +4,7 @@ declare module 'vue-router' {
   interface RouteMeta {
     role?: string[]
     requiresAuth: boolean
-    icon?: string
+    icon?: any
     locale?: string
     menuSelectKey?: string
   }

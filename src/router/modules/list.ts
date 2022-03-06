@@ -7,7 +7,7 @@ export default {
   meta: {
     locale: 'menu.list',
     requiresAuth: true,
-    icon: 'icon-list',
+    icon: 'List',
   },
   children: [
     {
